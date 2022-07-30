@@ -2,12 +2,11 @@ import { Container } from './styles';
 
 interface ICompanyProps {
   isVisible: boolean;
-  mouseLeave: () => void;
 }
 
-export function CompanyModal({ isVisible, mouseLeave }: ICompanyProps) {
+export function CompanyModal({ isVisible }: ICompanyProps) {
   return (
-    <Container isVisible={isVisible} onMouseLeave={mouseLeave}>
+    <Container isVisible={isVisible}>
       <li>History</li>
       <li>Our Team</li>
       <li>Blog</li>

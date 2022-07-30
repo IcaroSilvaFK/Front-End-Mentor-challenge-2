@@ -2,12 +2,11 @@ import { Container } from './styles';
 
 interface IFeaturesModal {
   isVisible: boolean;
-  mouseLeave: () => void;
 }
 
-export function FeaturesModal({ isVisible, mouseLeave }: IFeaturesModal) {
+export function FeaturesModal({ isVisible }: IFeaturesModal) {
   return (
-    <Container isVisible={isVisible} onMouseLeave={mouseLeave}>
+    <Container isVisible={isVisible}>
       <li>
         <img src='/assets/icon-todo.svg' alt='todo icon' />
         Todo List

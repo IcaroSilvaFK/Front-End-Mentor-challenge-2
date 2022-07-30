@@ -10,55 +10,45 @@ export function NavigationHeader() {
   const [companyModalIsVisible, setCompanyModalIsVisible] = useState(false);
 
   function handleLeaveMouseCompanyModal() {
-    setCompanyModalIsVisible(false);
+    setCompanyModalIsVisible((prev) => !prev);
   }
 
   function handleLeaveMouseFeatureModal() {
-    setFetureModalIsVisible(false);
+    setFetureModalIsVisible((prev) => !prev);
   }
 
   return (
     <Container>
       <ul className='container__navigation'>
-        <li>
-          <a href='' onMouseEnter={() => setFetureModalIsVisible(true)}>
-            Features
-            <img
-              src={
-                fetureModalIsVisible
-                  ? '/assets/icon-arrow-up.svg'
-                  : '/assets/icon-arrow-down.svg'
-              }
-              alt='Arrow down'
-            />
-          </a>
-          <FeaturesModal
-            isVisible={fetureModalIsVisible}
-            mouseLeave={handleLeaveMouseFeatureModal}
+        <li aria-label='button' onClick={handleLeaveMouseFeatureModal}>
+          Features
+          <img
+            src={
+              fetureModalIsVisible
+                ? '/assets/icon-arrow-up.svg'
+                : '/assets/icon-arrow-down.svg'
+            }
+            alt='Arrow down'
           />
+          <FeaturesModal isVisible={fetureModalIsVisible} />
         </li>
-        <li>
-          <a href='' onMouseEnter={() => setCompanyModalIsVisible(true)}>
-            Company
-            <img
-              src={
-                companyModalIsVisible
-                  ? '/assets/icon-arrow-up.svg'
-                  : '/assets/icon-arrow-down.svg'
-              }
-              alt='Arrow down'
-            />
-          </a>
-          <CompanyModal
-            isVisible={companyModalIsVisible}
-            mouseLeave={handleLeaveMouseCompanyModal}
+        <li aria-label='button' onClick={handleLeaveMouseCompanyModal}>
+          Company
+          <img
+            src={
+              companyModalIsVisible
+                ? '/assets/icon-arrow-up.svg'
+                : '/assets/icon-arrow-down.svg'
+            }
+            alt='Arrow down'
           />
+          <CompanyModal isVisible={companyModalIsVisible} />
         </li>
         <li>
-          <a href=''>Carrers</a>
+          <a href='/'>Carrers</a>
         </li>
         <li>
-          <a href=''>About</a>
+          <a href='/'>About</a>
         </li>
       </ul>
     </Container>

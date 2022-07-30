@@ -15,14 +15,17 @@ export const Container = styled.nav`
     li {
       position: relative;
       z-index: 1;
+      display: flex;
+      gap: 4px;
+      align-items: center;
+      cursor: pointer;
       a {
-        display: flex;
-        gap: 4px;
-        align-items: center;
-
         :hover {
           color: ${({ theme }) => theme.colors.almostBlack};
         }
+      }
+      :hover {
+        color: ${({ theme }) => theme.colors.almostBlack};
       }
     }
   }
