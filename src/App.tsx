@@ -1,26 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import { Header } from './components/Header';
+import MenuMobile from './components/mobile/Menu';
+import { SectionLeft } from './components/SectionLeft';
 
-function App() {
+import { Main } from './styles/app.styles';
+
+export function App() {
+  const [menuMobileIsVisible, setMenuMobileIsVisible] = useState(false);
+
+  function handleOpenMenuMobile() {
+    setMenuMobileIsVisible(true);
+  }
+  function handleCloseMenuMobile() {
+    setMenuMobileIsVisible(false);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header onPressMenuBurguer={handleOpenMenuMobile} />
+      <Main>
+        <SectionLeft />
+        <section>
+          <img
+            src='/assets/image-hero-desktop.png'
+            alt='image-hero'
+            className='desktop__image'
+          />
+          <img
+            src='/assets/image-hero-mobile.png'
+            alt='image-hero'
+            className='mobile__image'
+          />
+        </section>
+      </Main>
+      {menuMobileIsVisible && (
+        <MenuMobile handleCloseMenu={handleCloseMenuMobile} />
+      )}
+    </>
   );
 }
-
-export default App;
